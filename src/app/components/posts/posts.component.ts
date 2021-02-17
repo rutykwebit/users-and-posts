@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
 import { PostsService } from 'src/app/services/posts.service';
 
@@ -14,6 +14,7 @@ export class PostsComponent implements OnInit {
   user;
   postsList = [];
   selectedPostId;
+  animation = false;
 
   ngOnInit() {
     this.getPosts();
@@ -29,6 +30,7 @@ export class PostsComponent implements OnInit {
     if(this.user){
       this._postService.getPostsByUser(this.user.id).subscribe((res:any[])=>{
         this.postsList = res;
+        this.animation = true;
       }, error=> {
   
       });
@@ -36,6 +38,7 @@ export class PostsComponent implements OnInit {
     else{
       this._postService.getPosts().subscribe((res:any[])=>{
         this.postsList = res;
+        this.animation = true;
       }, error=> {
   
       });

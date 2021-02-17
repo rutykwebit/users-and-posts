@@ -1,4 +1,4 @@
-<table class="table table-hover">
+<table class="table table-hover" [ngClass]="{'pulsing':animation}" (animationend)="animation = false">
   <thead>
     <th width="90px">Post ID</th>
     <th>Title</th>

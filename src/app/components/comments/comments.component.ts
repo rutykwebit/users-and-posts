@@ -18,6 +18,8 @@ export class CommentsComponent implements OnInit, OnDestroy {
   commentsList = []
   source = timer(1, 15000);
   post;
+  animation = false;
+
   ngOnInit() {
     this.$subscriptionCommentsTimer = this.source.subscribe(val => this.getComments());
     this.$subscriptionComments = this._dataService.postEvent$.subscribe(postEmited=>{
@@ -31,11 +33,13 @@ export class CommentsComponent implements OnInit, OnDestroy {
     if(this.post){
       this._commentService.getCommentsByPost(this.post.id).subscribe((res:any[])=>{
         this.commentsList = res;
+        this.animation = true;
       })
     }
     else{
       this._commentService.getComments().subscribe((res:any[])=>{
         this.commentsList = res;
+        this.animation = true;
       })
     }
     
