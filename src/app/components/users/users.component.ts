@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnInit } from '@angular/core';
 import { UsersService } from '../../services/users.service';
 import { DataService } from 'src/app/services/data.service';
+import { AngularBootstrapToastsService } from 'angular-bootstrap-toasts';
 
 @Component({
   selector: 'app-users',
@@ -10,7 +11,8 @@ import { DataService } from 'src/app/services/data.service';
 export class UsersComponent implements OnInit {
 
   constructor(private _usersService:UsersService,
-              private _dataService:DataService) { }
+              private _dataService:DataService,
+              private _toast:AngularBootstrapToastsService) { }
 
   usersList:any[] = []
   selectedUserId;
@@ -22,6 +24,8 @@ export class UsersComponent implements OnInit {
   getUsers(){
     this._usersService.getUsers().subscribe((res:any[])=>{
       this.usersList = res;
+    },error=>{
+      this._toast.showSimpleToast({text:'An error occurred in the server',bodyClass:"danger"})
     })
   }
 

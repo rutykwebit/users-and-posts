@@ -9,6 +9,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { UsersComponent } from './components/users/users.component';
 import { CommentsComponent } from './components/comments/comments.component';
 import { PostsComponent } from './components/posts/posts.component';
+import { AngularBootstrapToastsModule } from 'angular-bootstrap-toasts';
 //import { ToastrModule } from 'ngx-toastr';
 
 // import {MatToolbarModule} from '@angular/material/toolbar';
@@ -27,6 +28,7 @@ import { PostsComponent } from './components/posts/posts.component';
     BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
+    AngularBootstrapToastsModule,
     //ToastrModule.forRoot(),
   ],
   providers: [],

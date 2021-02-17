@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularBootstrapToastsService } from 'angular-bootstrap-toasts';
 import { DataService } from 'src/app/services/data.service';
 import { PostsService } from 'src/app/services/posts.service';
 
@@ -10,7 +11,8 @@ import { PostsService } from 'src/app/services/posts.service';
 export class PostsComponent implements OnInit {
 
   constructor(private _postService:PostsService,
-              private _dataService:DataService) { }
+              private _dataService:DataService,
+              private _toast:AngularBootstrapToastsService) { }
   user;
   postsList = [];
   selectedPostId;
@@ -32,7 +34,7 @@ export class PostsComponent implements OnInit {
         this.postsList = res;
         this.animation = true;
       }, error=> {
-  
+        this._toast.showSimpleToast({text:'An error occurred in the server',bodyClass:"danger"})
       });
     }
     else{
@@ -40,7 +42,7 @@ export class PostsComponent implements OnInit {
         this.postsList = res;
         this.animation = true;
       }, error=> {
-  
+        this._toast.showSimpleToast({text:'An error occurred in the server',bodyClass:"danger"})
       });
     }
    
