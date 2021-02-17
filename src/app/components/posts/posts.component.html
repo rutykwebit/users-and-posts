@@ -1,0 +1,16 @@
+<table class="table table-hover">
+  <thead>
+    <th>Post ID</th>
+    <th>Title</th>
+    <th>Body</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let post of postsList" (click)="postSelected(post)"  
+      [ngClass]="{'selected-row':selectedPostId == post.id}" 
+       title="Click to watch to post's comments" data-toggle="tooltip">
+      <td >{{post.id}}</td>
+      <td >{{post.title | uppercase}}</td>
+      <td >{{post.body}}</td>
+    <tr>
+      
+</table>
